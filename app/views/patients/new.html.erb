@@ -1,0 +1,59 @@
+<main class="ptform_content">
+    
+    
+    <%= form_with model: @patient, local: true do |f| %>
+    <div class="form_left">
+    <h2>新規作成</h2>
+      <% if @patient.errors.any? %>
+        <div class="errormessage">
+          <ul>
+            <% @patient.errors.full_messages.each do |message| %>
+              <li>※<%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+<table>
+ 	<tbody>
+ 		<tr>
+ 			<th><%= f.label :patientid,"患者ID" %></th>
+ 			<td><%= f.text_field :patientid %></td>
+ 		</tr>
+ 		<tr>
+ 			<th><%= f.label :name,"患者氏名" %></th>
+ 			<td><%= f.text_field :name %></td>
+ 		</tr>
+ 		<tr>
+ 			<th><%= f.label :form,"食形態" %></th>
+ 			<td><%= f.select :form, [['常菜'], ['軟菜'], ['ソフト食S'], ['ソフト食E']], {}, {class: "user_class" } %></td>
+ 		</tr>
+ 		<tr>
+ 			<th><%= f.label :disease,"療養食" %></th>
+ 			<td><%= f.select :disease, [['一般'], ['糖尿'], ['心臓'], ['腎臓'],['肝臓'], ['膵臓'], ['貧血'], ['脂質'], ['潰瘍'], ['検査'], ['痛風']], {}, {class: "user_class" } %></td>
+ 		</tr>
+ 		<tr>
+ 			<th><%= f.label :staple,"主食" %></th>
+ 			<td><%= f.select :staple, [['米飯'], ['軟飯'], ['全粥'], ['五分粥'], ['重湯'], ['P粥'], ['食パン'], ['パン粥'], ['その他']], {}, {class: "user_class" } %>
+ 			<%= f.text_field :stapleweight %>&nbsp;<strong>g(枚）</strong></td>
+ 		</tr>
+ 		<tr>
+ 			<th><%= f.label :allergy,"アレルギー" %></th>
+ 			<td><%= f.text_field :allergy %></td>
+ 		</tr>
+ 		<tr>
+ 			<th><%= f.label :dislike,"嗜好" %></th>
+ 			<td><%= f.text_field :dislike %></td>
+ 		</tr>
+ 		<tr>
+ 			<th><%= f.label :comment,"フリーコメント" %></th>
+ 			<td><%= f.text_area :comment %></td>
+ 		</tr>
+ 	</tbody>
+ </table>
+	<div class="form_right">
+		<%= f.submit "登録" %>
+	</div>
+<% end %>
+
+</main>

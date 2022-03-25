@@ -1,0 +1,453 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+ 
+ /*------------リセットCSS------------*/
+/*1. より直感的なボックスサイズのモデルを使用*/
+*, *::before, *::after {box-sizing: border-box;}
+/*2. デフォルトのマージン・パディングを削除*/
+* { margin: 0;padding: 0;}
+/* 3. 高さは%ベースを使用*/
+html, body {height: 100%;}
+/* タイポグラフィの微調整
+  4. アクセシブルなline-heightを追加
+  5. テキストのレンダリングを改善*/
+body {line-height: 1.5;
+  -webkit-font-smoothing: antialiased;}
+/* 6. メディア要素のデフォルトを改善*/
+img, picture, video, canvas, svg {display: block;
+	max-width: 100%;}
+/*7. フォームのfontに関するデフォルトを削除*/
+input, button, textarea, select {
+  font: inherit;}
+/*8. テキストのオーバーフローを回避*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;}
+/* 9. ルートのスタックコンテキストを作成*/
+#root, #__next {
+  isolation: isolate;}
+ a{
+     text-decoration: none;
+     cursor: pointer;
+     color:#333; }
+ li{list-style: none;}
+ input{
+     cursor:pointer;
+ }
+  
+// 共通CSS  
+$maincolor:#00C6BF;
+$subcolor:#E5FFFF;
+$alertcolor:#E82517;
+$accentcolor:#EA5A4F;
+
+@mixin formtype($color) { 
+    width: 300px;
+    height: 47px;
+    // font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid $color;
+    display:block;
+    margin: 0 auto;
+    line-height: 47px;
+    padding: 0 10px
+    }
+@mixin content{
+    width: 80vw;
+	height: 90vh;
+	background-color:#fff;
+	box-shadow: 0 0 10px rgba(127,159,158,0.4);
+	position: absolute;
+	top:0;bottom: 0;right: 0;left: 0;
+	margin: auto;
+}
+input:focus,textarea:focus,select:focus {
+  outline: solid 2px $maincolor;
+}
+
+html{
+	font-size: 62.5%;
+}
+body{
+	background-color: $subcolor;
+	max-width: 100vw;
+	max-height: 100vh;
+	text-align: center;
+	font-family: 'ヒラギノ角ゴシック','Hiragino Sans','ＭＳ Ｐゴシック','MS PGothic','メイリオ', Meiryo,sans-serif;
+	overflow: clip;
+	position: relative;
+	color:#333;
+	font-size: 16px;
+	font-size: 1.6rem;
+	}
+div.alert {
+    color: $alertcolor;
+}
+div.notice {
+    background-color: $accentcolor;
+    color: #fff;
+}
+div.errormessage li{
+                color:$alertcolor;
+                text-align: left; }
+/*---------------------ヘッダー
+-------------------------------*/
+header {
+    background-color:$maincolor;
+    display: flex;
+    justify-content: space-between;
+    .header-logo {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10px;
+        img{
+        width: 60px;
+        height: auto;
+        margin-right: 10px;}
+        h1.app_title {
+            font-size: 20px;
+            font-size: 2rem;}
+        p.app_ja_title {
+            font-size: 12px;
+            font-size: 1.2rem;}
+    }
+    ul {
+        display: flex;
+        justify-content: space-around;
+        li{
+            
+        
+        a {
+            color: #fff;
+            padding: 17px 20px;
+            display: block;
+            &:hover{
+                color:$maincolor;
+                background-color:$subcolor;}
+        
+        }
+        .active{
+                color:$maincolor;
+                background-color:$subcolor;}
+    }
+        
+    }
+    
+}
+
+
+button.logoutbtn {
+    border: none;
+    background-color: #00C6BF;
+    color: #fff;
+    padding: 17px 20px;
+    cursor:pointer;
+    &:hover{
+            color:$maincolor;
+            background-color:$subcolor;}
+}
+/*---------------------トップ,新規ユーザー作成
+-------------------------------*/
+.logincontent{
+    @include content;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.left{
+	background-color: #00C6BF;
+	width: 100%;
+	height: 100%;
+}
+.logo {
+        margin: 100px auto;
+        width: 90%;
+}
+.app_title{
+	font-family: 'Comfortaa', cursive;
+	color:#fff;
+}
+.app_ja_title{
+    font-family: 'Zen Maru Gothic', sans-serif;
+	color:#fff;
+}
+img{
+    width:auto;
+    height:auto;
+    margin: 0 auto;
+}
+h2 {
+    color: $maincolor;
+    font-size: 3.6rem;
+}
+.right{
+	width: 100%;
+	form {
+    text-align: left;
+    margin: 0 auto;
+    width: 300px;
+       label {
+            display: block;
+            margin-top: 18px;
+        }
+        input {
+            @include formtype(#B5B5B5);
+        }
+        input[type="submit"] {
+            cursor: pointer;
+            margin: 50px 0;
+            color: #fff;
+            background-color: $maincolor;
+            border: $maincolor;
+        }
+    }
+    .subbtn{
+        @include formtype($maincolor);
+        color: $maincolor;
+    }
+	
+}
+
+/*---------------------ユーザー情報----
+-------------------------------------*/
+.showcontent{
+    @include content;
+    top: 40px;
+    height: 80vh;
+    
+    .showform {
+        padding: 100px 0;
+        .userform{
+            @include formtype(#B5B5B5);
+            margin:50px auto;
+            text-align: left;}
+        .mainbtn{
+            @include formtype($maincolor);
+            color: #fff;
+            background-color: $maincolor;}
+        i{
+            margin-right: 10px;}
+    }
+}
+/*--------------------患者一覧index----
+-------------------------------------*/
+main#indexpage {
+    width: 100vw;
+    height: 100vh;
+    background-color:$subcolor;
+    padding: 100px 0 150px;
+    overflow-y: scroll;
+    padding: 40px 40px 100px 40px;
+}
+div.indexcontent{
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(127,159,158,0.4);
+    margin: auto;
+    position: static;
+    height: auto;
+    padding: 10px;
+    width:1000px;
+    
+    table{
+        margin:0 auto;
+        border-collapse: collapse;
+        th {
+            color: #c4c4c4;
+            padding: 5px 20px;
+            border-bottom: 3px solid #eeeeee;}
+        tbody tr:hover{
+            background-color:$subcolor;
+            cursor:pointer;
+        }
+        td{
+            padding:7px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+    }
+}
+.indexbtn{
+    border:1px solid #333;
+    border-radius:3px;
+    padding:7px;
+    color:#333;
+    margin:0 10px;
+}
+.editbtn{
+    border-color:$maincolor;
+    color:$maincolor;
+    &:hover{
+        color:#fff;
+        background-color:$maincolor;}
+}
+/*--------------------患者新規・編集----
+-------------------------------------*/
+main.ptform_content {
+    height: 70vh;
+    margin: 5% 0;
+    form {
+        display: flex;
+        justify-content: space-around;
+
+        div.form_left {
+            width: 280px;
+            padding: 0 10px;
+            h2{
+                padding-bottom: 50px;}
+        }
+        table{
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(127,159,158,0.4);
+            // margin: 0 10%;
+            padding: 0 30px;
+            text-align: left;
+            min-width:585px;
+            .field_with_errors {display: inline;}
+                th {
+                    font-weight: 500;}
+                input, button, textarea, select {
+                    width: 100%;
+                    border: 1px solid #b7b7b7;
+                    border-radius: 3px;
+                    padding: 0 10px;
+                    margin:10px 0;}
+                input, button, select{
+                    height:35px;}
+                textarea{
+                    height:auto;}
+            }
+        
+         #patient_staple,#patient_stapleweight {
+            width: 40%;}
+        label {
+            margin-right: 50px;}
+        input[type="submit"] {
+        width: 93px;
+        height: 52px;
+        font-size: 2.7rem;
+        border:1px solid $maincolor;
+        border-radius:7px;
+        color:$maincolor;
+        background-color:#fff;
+            &:hover{
+                color:#fff;
+                background-color:$maincolor;
+                cursor:pointer;}
+        }
+        .form_right {
+        align-self: flex-end;
+        }
+    }
+}
+/*--------------------患者食札（show)----
+-------------------------------------*/
+
+main#ptshowpage {
+    background-color: #fff;
+    height: auto;
+    padding: 40px;
+    margin: 30px 0;
+div#ptshow {
+        display: flex;
+        justify-content: center;
+        /* align-content: center; */
+    section.ptshow_left{
+        .ptname{
+            font-size:62px;
+            font-size: 6.2rem;
+            font-weight:bold;}
+        .ptid{
+            font-size:36px;
+            font-size: 3.6rem;
+            margin-bottom: 30px;}
+        .toindexbtn{
+            @include formtype($maincolor);
+                background-color:#fff;
+                color:$maincolor;
+                margin-top: 30px;
+                font-size: 20px;
+                font-size: 2rem;}
+        .editbtn,.deletebtn {
+            height: 52px;
+            width: 93px;
+            display: inline-block;
+            font-size: 27px;
+            font-size: 2.7rem;
+            line-height: 36px;}
+    }   
+        section.ptshow_right {
+            width: 60%;
+            margin-left: 50px;
+            .ptform{
+                font-size:20px;
+            }
+            div#card {
+                // background-color: pink;
+                margin: 20px auto;
+                width: 485px;
+                height: 300px;
+                position:relative;
+                padding: 10px;
+
+                .pt_c_name{
+                    font-size:48px;
+                    font-size: 4.8rem;}
+                .pt_c_allergy,.pt_c_dislike,.pt_c_comment{
+                    font-size:28px;
+                    font-size: 2.8rem;
+                    text-align: left;}
+                .pt_c_disease{
+                    font-size:38px;
+                    font-size: 3.8rem;
+                    color:#fff;
+                    background-color:red;
+                    width:108px;
+                    height:65px;
+                    position: absolute;
+                    right: 0;
+                    line-height: 65px;}
+                .pt_c_staple{
+                    font-size:36px;
+                    font-size: 3.6rem;
+                    position: absolute;
+                    left: 100px;
+                    right: 100px;
+                    bottom: 10px;}
+                .pt_c_allergy{color:red;}
+                .pt_c_comment{white-space: pre-wrap;}
+            }
+            input {
+                @include formtype($maincolor);
+                background-color:$maincolor;
+                color:#fff;
+                font-size: 27px;
+                font-size: 2.7rem;
+                font-weight: 500;}
+            
+    }
+}
+}
+@media print {
+  .hide{
+    display: none;
+  }
+  body{
+      background-color:#fff;
+  }
+  header{
+     display: none; 
+  }
+  
+}

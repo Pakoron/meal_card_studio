@@ -1,0 +1,59 @@
+<main id="indexpage">
+<div class="indexcontent">  
+    <table>
+        <thead>
+            <tr>
+                <th class="h1">患者ID</th>
+                <th>患者氏名</th>
+                <th>食形態</th>
+                <th>療養食</th>
+                <th>主食</th>
+                <th>アレルギー</th>
+                <th>嗜好</th>
+                <th>フリーコメント</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @patients.each do |patient| %>
+            <tr data-href="<%= patient_path(patient) %>">
+                <td><%= patient.patientid %></td>
+                <td><%= patient.name %></td>
+                <td><%= patient.form %></td>
+                <td><% if patient.disease!='一般' %>
+                        <%= patient.disease %>
+                    <% end %>
+                </td>
+                <td><%= patient.staple %><%= patient.stapleweight %>
+                    <% if patient.staple!='食パン' %>
+                        g
+                    <% else %>
+                        枚
+                    <% end %>
+                </td>
+                <td><%= patient.allergy %></td>
+                <td><%= patient.dislike %></td>
+                <td><%= patient.comment %></td>
+                
+                <td><%= link_to '編集', edit_patient_path(patient),class: 'indexbtn editbtn' %></td>
+                <td><%= link_to '削除', patient_path(patient),data: { turbo_method: 'delete', turbo_confirm: '削除しますか?' },class: 'indexbtn deletebtn' %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+</main>
+<script type="text/javascript">
+    jQuery( function($) {
+    $('tbody tr[data-href]').addClass('clickable').click( function() {
+        window.location = $(this).attr('data-href');
+    }).find('a').hover( function() {
+        $(this).parents('tr').unbind('click');
+    }, function() {
+        $(this).parents('tr').click( function() {
+            window.location = $(this).attr('data-href');
+        });
+    });
+});
+</script>

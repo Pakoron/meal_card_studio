@@ -1,0 +1,41 @@
+<main class="logincontent">
+	<div class="left">
+			<div class="logo">
+				<p class="app_ja_title">食札作成アプリ</p>
+				<h1 class="app_title">Meal Card Studio</h1>
+				<img src="/assets/logo.png" alt="ロゴ画像">
+			</div>
+	</div>
+	<div class="right">
+	<%= form_with model:@user,url:home_index_path,local:true do |f| %>
+		<% if @user.errors.any? %>
+		   <div class="errormessage">
+		      <ul>
+		        <% @user.errors.full_messages.each do |message| %>
+		          <li><%= message %></li>
+		        <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+	 
+		
+		
+			<h2>新規ユーザー登録</h2>
+			<div>
+				<%= f.label :name,"氏名" %>
+				<%= f.text_field :name %>
+			</div>
+		
+			<div>
+				<%= f.label :password,"パスワード" %>
+				<%= f.password_field :password %>
+			</div>
+			<div>
+				<%= f.submit "登録する" %>
+			</div>
+		
+	<% end %>
+		
+		<%= link_to 'ログイン画面へ',login_path, class: 'subbtn' %>
+	</div>
+</main>

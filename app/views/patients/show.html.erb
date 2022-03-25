@@ -1,0 +1,57 @@
+<main id="ptshowpage">
+
+<h2 class="hide">患者食札情報</h2>
+    <div id="ptshow">
+        <section class="ptshow_left hide">
+            <p class="ptname"><%= @patient.name %></p>
+            <p class="ptid">患者ID：<%= @patient.patientid %></p>
+            <p><%= link_to '編集', edit_patient_path(@patient),class: 'indexbtn editbtn' %>
+             <%= link_to '削除', @patient,data: { turbo_method: 'delete', turbo_confirm: '削除しますか?' },class: 'indexbtn deletebtn' %></p>
+            
+            <%= link_to '患者一覧へ', patients_path,class: 'toindexbtn' %>
+        </section>
+            
+        <section class="ptshow_right">
+            <p class="ptform hide"><%= @patient.form %></p>
+   
+            <div id="card"> 
+                <p class="pt_c_name"><%= @patient.name %>&nbsp;様</p>
+                <% if  @patient.disease!='一般' %>
+                    <p class="pt_c_disease"><%= @patient.disease %></p>
+                <% end %>
+                <% if @patient.allergy? %>
+                    <p class="pt_c_allergy"><%= @patient.allergy %>アレルギー</p>
+                <% end %>
+                <% if @patient.dislike? %>
+                    <p class="pt_c_dislike">嗜好：<%= @patient.dislike %>禁止</p>
+                <% end %>
+                <p class="pt_c_comment"><%= @patient.comment %></p>
+                <p class="pt_c_staple"><%= @patient.staple %><%= @patient.stapleweight %>
+                <% if @patient.staple!='食パン' %>
+                    g
+                <% else %>
+                    枚
+                <% end %>
+                </p>
+            </div>
+    
+                    
+            <form class="hide">
+                <input type="button" value="印刷する" onclick="window.print();">
+            </form>
+    
+        </section>
+    </div>
+
+</main>
+
+<!--食札色-->
+<% if @patient.form=="常菜" %>
+    <script type="text/javascript">$("#card").css("background-color","#D6EFFF");</script>
+<% elsif @patient.form=="軟菜" %>
+    <script type="text/javascript">$("#card").css("background-color","#FFD09A");</script>
+<% elsif @patient.form=="ソフト食S" %>
+    <script type="text/javascript">$("#card").css("background-color","#FDFFA0");</script>
+<% else %>
+    <script type="text/javascript">$("#card").css("background-color","#FFD9EF");</script>
+<% end %>

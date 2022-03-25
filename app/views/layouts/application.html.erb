@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MealCardStudio</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/87912f9c74.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+
+  <body>
+      
+    <div class="container">
+      
+  <% unless current_user.nil? %>    
+  <header>
+     <%= link_to patients_path do %>
+    <div class="header-logo">
+        <img src="/assets/logo.png" alt="ロゴ画像">
+        <div class="app_name">
+    		<p class="app_ja_title">食札作成アプリ</p>
+    		<h1 class="app_title">Meal Card Studio</h1>
+		</div>
+	</div><% end %>
+        
+    <nav>   
+        <ul>
+            
+            <li><%= link_to '患者一覧', patients_path,class:"#{ "active" if controller.action_name == 'index'}" %></li>
+            <li><%= link_to '新規作成', new_patient_path,class:"#{ "active" if controller.action_name == 'new'}" %></li>
+            <li><%= link_to "#{current_user.name} (ID:#{current_user.id})",patients_userdata_path,class:"#{ "active" if controller.action_name == 'userdata'}" %></li>
+            <li><%= button_to 'ログアウト', logout_path,method: :delete,class: "logoutbtn"  %></li>
+            
+        </ul>
+    </nav>
+</header>
+
+<% end %>
+<div class="notice hide"><%= notice %></div>
+<div class="alert"><%= alert %></div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

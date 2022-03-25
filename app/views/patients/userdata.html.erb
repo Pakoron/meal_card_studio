@@ -1,0 +1,14 @@
+
+
+<main class="showcontent">
+    <div class="showform">
+        <h2>ユーザー情報</h2>
+        
+        <p class="userform"><i class="fas a-solid fa-user"></i>ユーザー名&nbsp;:&nbsp;<%= current_user.name %></p>
+                    
+        
+        <p class="userform"><i class="fas fa-solid fa-list-ol"></i>ユーザーID&nbsp;:&nbsp;<%= current_user.id %></p>
+        
+        <%= link_to '患者一覧へ', patients_path,class: 'mainbtn' %>
+    </div>
+</main>
