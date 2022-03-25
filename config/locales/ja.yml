@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+     patient: 患者
+     user: ユーザー
+    attributes:
+      user:
+        name: 氏名
+        password: パスワード
+      patient:
+        name: 患者氏名
+        patientid: 患者ID
+        stapleweight: 主食重量(枚数)
