@@ -80,6 +80,7 @@ group :test do
   
 end
 
-group :production do
-  gem 'pg', '~> 1.2.3'
-end
+# group :production do
+#   gem 'pg', '~> 1.2.3'
+# end
+gem 'pg', '~> 1.2.3', group: :production
