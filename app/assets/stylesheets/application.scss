@@ -394,33 +394,32 @@ div#ptshow {
                 font-size:20px;
             }
             div#card {
-                // background-color: pink;
                 margin: 20px auto;
-                width: 485px;
-                height: 300px;
+                width: 105mm;
+                height: 74mm;
                 position:relative;
                 padding: 10px;
 
                 .pt_c_name{
-                    font-size:48px;
-                    font-size: 4.8rem;}
+                    font-size:40px;
+                    font-size: 4rem;}
                 .pt_c_allergy,.pt_c_dislike,.pt_c_comment{
-                    font-size:28px;
-                    font-size: 2.8rem;
+                    font-size:24px;
+                    font-size: 2.4rem;
                     text-align: left;}
                 .pt_c_disease{
-                    font-size:38px;
-                    font-size: 3.8rem;
+                    font-size:32px;
+                    font-size: 3.2rem;
                     color:#fff;
                     background-color:red;
-                    width:108px;
-                    height:65px;
+                    width:98px;
+                    height:55px;
                     position: absolute;
                     right: 0;
-                    line-height: 65px;}
+                    line-height: 55px;}
                 .pt_c_staple{
-                    font-size:36px;
-                    font-size: 3.6rem;
+                    font-size:32px;
+                    font-size: 3.2rem;
                     position: absolute;
                     left: 100px;
                     right: 100px;
@@ -428,17 +427,26 @@ div#ptshow {
                 .pt_c_allergy{color:red;}
                 .pt_c_comment{white-space: pre-wrap;}
             }
-            input {
-                @include formtype($maincolor);
-                background-color:$maincolor;
-                color:#fff;
-                font-size: 27px;
-                font-size: 2.7rem;
-                font-weight: 500;}
-            
+            form{
+                input {
+                    @include formtype($maincolor);
+                    background-color:$maincolor;
+                    color:#fff;
+                    font-size: 27px;
+                    font-size: 2.7rem;
+                    font-weight: 500;}
+                p{
+                        color: #999999;
+                        width: 420px;
+                        margin: 10px auto;
+                        line-height: 1.2;
+                        text-align: left;}
+            }
     }
 }
 }
+
+
 @media print {
   .hide{
     display: none;
@@ -449,5 +457,8 @@ div#ptshow {
   header{
      display: none; 
   }
-  
+  @page:first{
+      margin:0;
+  }
+   
 }
